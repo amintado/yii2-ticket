@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Url;
-use ricco\ticket\models\TicketHead;
+use ricco\ticket\Translation;
+
 
 /** @var TicketHead $dataProvider */
 

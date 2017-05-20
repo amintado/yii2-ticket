@@ -1,5 +1,6 @@
 <?php
 
+use ricco\ticket\Translation;
 use yii\helpers\Html;
 
 $this->title = 'Support';
@@ -13,10 +14,10 @@ $this->title = 'Support';
     <div class="container-fluid row">
         <div class="col-lg-12">
             <a class="btn btn-primary" href="<?= \yii\helpers\Url::to(['ticket/index']) ?>"
-               style="margin-bottom: 10px; margin-left: 15px">Назад</a>
+               style="margin-bottom: 10px; margin-left: 15px">پیش</a>
             <a class="btn btn-primary" style="width: 100%" role="button" data-toggle="collapse" href="#collapseExample"
                aria-expanded="false" aria-controls="collapseExample">
-                <i class="glyphicon glyphicon-pencil pull-left"></i><span>Ответ</span>
+                <i class="glyphicon glyphicon-pencil pull-left"></i><span>پاسخ</span>
             </a>
             <?php if ($error = Yii::$app->session->getFlash('error')) : ?>
                 <div class="alert alert-danger text-center" style="margin-top: 10px;"><?= $error ?></div>
@@ -31,7 +32,7 @@ $this->title = 'Support';
                         'accept'   => 'image/*',
                     ])->label(false); ?>
                     <div class="text-center">
-                        <button class='btn btn-primary'>Отправить</button>
+                        <button class='btn btn-primary'>به ارسال</button>
                     </div>
                     <?= $form->errorSummary($newTicket) ?>
                     <?php $form->end() ?>
