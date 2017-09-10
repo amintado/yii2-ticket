@@ -1,12 +1,12 @@
 <?php
 
-namespace ricco\ticket\controllers;
+namespace amintado\ticket\controllers;
 
-use ricco\ticket\Mailer;
-use ricco\ticket\models\TicketBody;
-use ricco\ticket\models\TicketHead;
-use ricco\ticket\models\User;
-use ricco\ticket\Module;
+use amintado\ticket\Mailer;
+use amintado\ticket\models\TicketBody;
+use amintado\ticket\models\TicketHead;
+use amintado\ticket\models\User;
+use amintado\ticket\Module;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;

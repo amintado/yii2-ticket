@@ -1,6 +1,6 @@
 <?php
 
-namespace ricco\ticket\models;
+namespace amintado\ticket\models;
 
 use yii\db\ActiveRecord;
 

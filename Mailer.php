@@ -1,5 +1,5 @@
 <?php
-namespace ricco\ticket;
+namespace amintado\ticket;
 
 use yii\helpers\Url;
 

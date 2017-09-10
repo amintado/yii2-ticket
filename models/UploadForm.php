@@ -1,11 +1,11 @@
 <?php
 
-namespace ricco\ticket\models;
+namespace amintado\ticket\models;
 
 use Yii;
 use yii\base\Model;
 use yii\web\UploadedFile;
-use ricco\ticket\Module;
+use amintado\ticket\Module;
 
 class UploadForm extends Model
 {

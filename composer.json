@@ -1,15 +1,19 @@
 {
-    "name": "ricco/yii2-ticket",
-    "description": "A ticket system for website",
-    "keywords": ["yii2", "yii2-ticket", "ticket system", "ricco"],
+    "name": "amintado/yii2-ticket",
+    "description": "A ticket system for Yii2 websites",
+    "keywords": ["yii2", "yii2-ticket", "ticket system", "ricco","amintado"],
     "type": "yii2-extension",
     "license": "MIT",
     "version": "1.0.8",
-    "homepage": "https://bitbucket.org/Ricco381/yii2-ticket/src",
+    "homepage": "https://github.com/amintado/yii2-ticket",
     "authors": [
         {
             "name": "ricco381",
             "email": "ricco381@gmail.com"
+        },
+        {
+            "name": "amintado",
+            "email": "amintado@gmail.com"
         }
     ],
     "require": {
@@ -17,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ricco\\ticket\\": ""
+            "amintado\\ticket\\": ""
         }
     }
 }

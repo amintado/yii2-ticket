@@ -1,9 +1,9 @@
 <?php
 
-namespace ricco\ticket\models;
+namespace amintado\ticket\models;
 
-use ricco\ticket\Mailer;
-use ricco\ticket\Module;
+use amintado\ticket\Mailer;
+use amintado\ticket\Module;
 use Yii;
 
 /**

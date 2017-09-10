@@ -1,11 +1,11 @@
 <?php
 
-namespace ricco\ticket\controllers;
+namespace amintado\ticket\controllers;
 
-use ricco\ticket\models\TicketBody;
-use ricco\ticket\models\TicketFile;
-use ricco\ticket\models\TicketHead;
-use ricco\ticket\models\UploadForm;
+use amintado\ticket\models\TicketBody;
+use amintado\ticket\models\TicketFile;
+use amintado\ticket\models\TicketHead;
+use amintado\ticket\models\UploadForm;
 use yii\filters\AccessControl;
 use yii\filters\AccessRule;
 use yii\helpers\Url;

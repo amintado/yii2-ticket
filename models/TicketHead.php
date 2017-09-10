@@ -1,13 +1,13 @@
 <?php
 
-namespace ricco\ticket\models;
+namespace amintado\ticket\models;
 
-use \ricco\ticket\models;
+use \amintado\ticket\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\data\ActiveDataProvider;
 use yii\db\Expression;
-use ricco\ticket\Module;
+use amintado\ticket\Module;
 
 /**
  * This is the model class for table "ticket_head".

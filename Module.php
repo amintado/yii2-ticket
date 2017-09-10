@@ -1,8 +1,8 @@
 <?php
 
-namespace ricco\ticket;
+namespace amintado\ticket;
 
-use ricco\ticket\models\User;
+use amintado\ticket\models\User;
 use Yii;
 
 /**
