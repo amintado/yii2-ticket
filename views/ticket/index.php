@@ -1,11 +1,11 @@
 <?php
 use yii\helpers\Url;
-use ricco\ticket\Translation;
-
+use amintado\ticket\Translation;
+use amintado\ticket\models\TicketHead;
 
 /** @var TicketHead $dataProvider */
 
-$this->title = 'Support';
+$this->title = 'پشتیبانی';
 
 $this->registerJs("
 
@@ -21,7 +21,7 @@ $this->registerJs("
     <div class="container-fluid row">
         <div class="col-lg-12">
             <a type="button" href="<?= Url::to(['ticket/open']) ?>" class="btn btn-primary pull-right"
-               style="margin-right: 10px">Открыть</a>
+               style="margin-right: 10px">باز کردن</a>
             <div class="clearfix" style="margin-bottom: 10px"></div>
             <div>
                 <?= \yii\grid\GridView::widget([
@@ -39,13 +39,13 @@ $this->registerJs("
                             'value'          => function ($model) {
                                 switch ($model['status']) {
                                     case TicketHead::OPEN :
-                                        return '<div class="label label-default">Открыт</div>';
+                                        return '<div class="label label-default">باز</div>';
                                     case TicketHead::WAIT :
-                                        return '<div class="label label-warning">Ожидание</div>';
+                                        return '<div class="label label-warning">در انتظار پاسخ</div>';
                                     case TicketHead::ANSWER :
-                                        return '<div class="label label-success">Отвечен</div>';
+                                        return '<div class="label label-success">پاسخ داده شده</div>';
                                     case TicketHead::CLOSED :
-                                        return '<div class="label label-info">Закрыт</div>';
+                                        return '<div class="label label-info">بسته شده</div>';
                                 }
                             },
                             'format'         => 'html',

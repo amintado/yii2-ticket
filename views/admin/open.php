@@ -8,10 +8,10 @@ use yii\web\JsExpression;
 <div class="panel page-block">
     <div class="container-fluid row">
         <div class="col-md-12">
-            <a class="btn btn-primary" href="<?= \yii\helpers\Url::to(['admin/index']) ?>" style="margin-bottom: 10px">Назад</a>
+            <a class="btn btn-primary" href="<?= \yii\helpers\Url::to(['admin/index']) ?>" style="margin-bottom: 10px">بازگشت</a>
             <div class="well">
                 <?php $form = \yii\widgets\ActiveForm::begin([]) ?>
-                <label for="">Имя пользователя</label>
+                <label for="">نام کاربری</label>
                 <?= \yii\jui\AutoComplete::widget([
                     'clientOptions' => [
                         'source'   => $users,
@@ -36,7 +36,7 @@ use yii\web\JsExpression;
                         'style' => 'height: 150px; resize: none;',
                     ])->label('Сообщение'); ?>
                 <div class="text-center">
-                    <button class='btn btn-primary'>Отправить</button>
+                    <button class='btn btn-primary'>ارسال</button>
                 </div>
                 <?= $form->errorSummary($ticketBody) ?>
                 <?php $form->end() ?>

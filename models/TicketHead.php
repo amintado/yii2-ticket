@@ -88,10 +88,10 @@ class TicketHead extends \yii\db\ActiveRecord
         return [
             'id'          => 'ID',
             'user_id'     => 'User ID',
-            'department'  => 'Отдел',
-            'topic'       => 'Тема',
-            'status'      => 'Status',
-            'date_update' => 'Последнее обновление',
+            'department'  => 'بخش پاسخ گو',
+            'topic'       => 'موضوع',
+            'status'      => 'وضعیت',
+            'date_update' => 'تاریخ بروزرسانی',
         ];
     }
 

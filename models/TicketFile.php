@@ -50,8 +50,8 @@ class TicketFile extends \yii\db\ActiveRecord
         return [
             'id'       => Yii::t('app', 'ID'),
             'id_body'  => Yii::t('app', 'Id Body'),
-            'fileName' => Yii::t('app', 'File Name'),
-            'document_name' => Yii::t('app', 'Document name'),
+            'fileName' => Yii::t('app', 'نام'),
+            'document_name' => Yii::t('app', 'نام سند'),
         ];
     }
 

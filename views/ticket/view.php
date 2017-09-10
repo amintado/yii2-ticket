@@ -3,18 +3,18 @@
 use ricco\ticket\Translation;
 use yii\helpers\Html;
 
-$this->title = 'Support';
+$this->title = 'پشتیبانی';
 
-/** @var \ricco\ticket\models\TicketBody $newTicket */
-/** @var \ricco\ticket\models\TicketBody $thisTicket */
-/** @var \ricco\ticket\models\TicketFile $fileTicket */
+/** @var \amintado\ticket\models\TicketBody $newTicket */
+/** @var \amintado\ticket\models\TicketBody $thisTicket */
+/** @var \amintado\ticket\models\TicketFile $fileTicket */
 
 ?>
 <div class="panel page-block">
     <div class="container-fluid row">
         <div class="col-lg-12">
             <a class="btn btn-primary" href="<?= \yii\helpers\Url::to(['ticket/index']) ?>"
-               style="margin-bottom: 10px; margin-left: 15px">پیش</a>
+               style="margin-bottom: 10px; margin-left: 15px">بازگشت</a>
             <a class="btn btn-primary" style="width: 100%" role="button" data-toggle="collapse" href="#collapseExample"
                aria-expanded="false" aria-controls="collapseExample">
                 <i class="glyphicon glyphicon-pencil pull-left"></i><span>پاسخ</span>
@@ -26,13 +26,13 @@ $this->title = 'Support';
                 <div class="well">
                     <?php $form = \yii\widgets\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
                     <?= $form->field($newTicket,
-                        'text')->textarea(['style' => 'height: 150px; resize: none;'])->label('Сообщение')->error() ?>
+                        'text')->textarea(['style' => 'height: 150px; resize: none;'])->label('پیام شما')->error() ?>
                     <?= $form->field($fileTicket, 'fileName[]')->fileInput([
                         'multiple' => true,
                         'accept'   => 'image/*',
                     ])->label(false); ?>
                     <div class="text-center">
-                        <button class='btn btn-primary'>به ارسال</button>
+                        <button class='btn btn-primary'>ارسال به</button>
                     </div>
                     <?= $form->errorSummary($newTicket) ?>
                     <?php $form->end() ?>
@@ -43,7 +43,7 @@ $this->title = 'Support';
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                 <span><?= $ticket['name_user'] ?>&nbsp;<span
-                        style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'Сотрудник' : 'Клиент' ?>)</span></span>
+                        style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>)</span></span>
                         <span class="pull-right"><?= $ticket['date'] ?></span>
                     </div>
                     <div class="panel-body clearfix" style="word-wrap: break-word;">

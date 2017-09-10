@@ -61,9 +61,9 @@ class TicketBody extends \yii\db\ActiveRecord
     {
         return [
             'id'        => 'ID',
-            'name_user' => 'Name User',
-            'text'      => 'Text',
-            'date'      => 'Date',
+            'name_user' => 'نام کاربر',
+            'text'      => 'متن درخواست',
+            'date'      => 'تاریخ',
         ];
     }
 

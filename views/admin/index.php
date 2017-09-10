@@ -4,7 +4,7 @@
 
 <div class="panel page-block">
     <div class="container-fluid row">
-    <a href="<?= \yii\helpers\Url::toRoute(['admin/open']) ?>" class="btn btn-primary" style="margin-left: 15px">Написать</a>
+    <a href="<?= \yii\helpers\Url::toRoute(['admin/open']) ?>" class="btn btn-primary" style="margin-left: 15px">نوشتن</a>
     <br><br>
     <div class="container-fluid">
         <div class="col-md-12">
@@ -38,16 +38,16 @@
                             switch ($model->body['client']) {
                                 case 0 :
                                     if ($model->status == \ricco\ticket\models\TicketHead::CLOSED) {
-                                        return '<div class="label label-success">Клиент</div>&nbsp;<div class="label label-default">Закрыт</div>';
+                                        return '<div class="label label-success">مشتری</div>&nbsp;<div class="label label-default">بسته شده</div>';
                                     }
 
-                                    return '<div class="label label-success">Клиент</div>';
+                                    return '<div class="label label-success">مشتری</div>';
                                 case 1 :
                                     if ($model->status == \ricco\ticket\models\TicketHead::CLOSED) {
-                                        return '<div class="label label-primary">Администратор</div>&nbsp;<div class="label label-default">Закрыт</div>';
+                                        return '<div class="label label-primary">مدیر</div>&nbsp;<div class="label label-default">بسته شده</div>';
                                     }
 
-                                    return '<div class="label label-primary">Администратор</div>';
+                                    return '<div class="label label-primary">مدیر</div>';
                             }
                         },
                         'format'    => 'html',
@@ -64,25 +64,25 @@
                         ],
                         'buttons'       => [
                             'update' => function ($url, $model) {
-                                return \yii\helpers\Html::a('Ответить',
+                                return \yii\helpers\Html::a('پاسخ',
                                     \yii\helpers\Url::toRoute(['admin/answer', 'id' => $model['id']]),
                                     ['class' => 'btn-xs btn-info']);
                             },
                             'delete' => function ($url, $model) {
-                                return \yii\helpers\Html::a('Удалить',
+                                return \yii\helpers\Html::a('حذف',
                                     \yii\helpers\Url::to(['admin/delete', 'id' => $model['id']]),
                                     [
                                         'class'   => 'btn-xs btn-danger',
-                                        'onclick' => 'return confirm("Вы действительно хотите удалить?")',
+                                        'onclick' => 'return confirm("آیا از حذف این مورد اطمینان کامل را دارید؟")',
                                     ]
                                 );
                             },
                             'closed' => function ($url, $model) {
-                                return \yii\helpers\Html::a('Закрыть',
+                                return \yii\helpers\Html::a('بستن',
                                     \yii\helpers\Url::to(['admin/closed', 'id' => $model['id']]),
                                     [
                                         'class'   => 'btn-xs btn-primary',
-                                        'onclick' => 'return confirm("Вы действительно хотите закрыть тикет?")',
+                                        'onclick' => 'return confirm("آیا برای بستن این تیکت اطمینان دارید؟")',
                                     ]
                                 );
                             },

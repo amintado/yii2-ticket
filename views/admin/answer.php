@@ -8,10 +8,10 @@ use yii\helpers\Html;
     <div class="container-fluid row">
         <div class="col-lg-12">
             <a class="btn btn-primary" href="<?= \yii\helpers\Url::toRoute(['admin/index']) ?>"
-               style="margin-bottom: 10px">Назад</a>
+               style="margin-bottom: 10px">بازگشت</a>
             <a class="btn btn-primary" style="width: 100%" role="button" data-toggle="collapse" href="#collapseExample"
                aria-expanded="false" aria-controls="collapseExample">
-                <i class="glyphicon glyphicon-pencil pull-left"></i><span>Ответ</span>
+                <i class="glyphicon glyphicon-pencil pull-left"></i><span>پاسخ</span>
             </a>
             <div class="collapse" id="collapseExample">
                 <div class="well">
@@ -19,7 +19,7 @@ use yii\helpers\Html;
                     <?= $form->field($newTicket,
                         'text')->textarea(['style' => 'height: 150px; resize: none;'])->label('Сообщение')->error() ?>
                     <div class="text-center">
-                        <button class='btn btn-primary'>Отправить</button>
+                        <button class='btn btn-primary'>ارسال</button>
                     </div>
                     <?= $form->errorSummary($newTicket) ?>
                     <?php $form->end() ?>
@@ -30,7 +30,7 @@ use yii\helpers\Html;
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <span><?= $ticket['name_user'] ?>&nbsp;<span
-                                    style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'Сотрудник' : 'Клиент' ?>
+                                    style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>
                                 )</span></span>
                         <span class="pull-right"><?= $ticket['date'] ?></span>
                     </div>

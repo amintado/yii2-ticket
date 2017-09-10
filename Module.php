@@ -13,23 +13,24 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'ricco\ticket\controllers';
+    public $controllerNamespace = 'amintado\ticket\controllers';
 
     /** @var bool Уведомление на почту о тикетах */
     public $mailSend = false;
 
     /** @var string Тема email сообщения когда пользователю приходит ответ */
-    public $subjectAnswer = 'Ответ на тикет сайта exemple.com';
+    public $subjectAnswer = 'پاسخ درخواست پشتیبانی شما';
 
     /** @var  User */
     public $userModel = false;
 
+    /**
+     * Departments List
+     * @var array
+     */
     public $qq = [
-        'Вопрос  по обмену' => 'Вопрос  по обмену',
-        'Пополнению ЛК'     => 'Пополнению ЛК',
-        'Вводу средств'     => 'Вводу средств',
-        'Выводу средств'    => 'Выводу средств',
-        'Другое'            => 'Другое',
+        'support'=>'بخش پشتیبانی',
+        'Technical'=>'بخش فنی'
     ];
 
     /** @var array Ники администраторав */
