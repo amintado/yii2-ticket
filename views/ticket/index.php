@@ -1,4 +1,6 @@
 <?php
+
+use amintado\base\AmintadoFunctions;
 use yii\helpers\Url;
 use amintado\ticket\Translation;
 use amintado\ticket\models\TicketHead;
@@ -39,9 +41,9 @@ $this->registerJs("
                             'value'          => function ($model) {
                                 switch ($model['status']) {
                                     case TicketHead::OPEN :
-                                        return '<div class="label label-default">باز</div>';
+                                        return '<div class="label label-default">در انتظار پاسخ</div>';
                                     case TicketHead::WAIT :
-                                        return '<div class="label label-warning">در انتظار پاسخ</div>';
+                                        return '<div class="label label-warning">پاسخ مشتری</div>';
                                     case TicketHead::ANSWER :
                                         return '<div class="label label-success">پاسخ داده شده</div>';
                                     case TicketHead::CLOSED :
@@ -55,7 +57,14 @@ $this->registerJs("
                                 'style' => 'text-align:right; font-size:13px',
                             ],
                             'attribute'      => 'date_update',
-                            'value'          => "date_update",
+                            'value'          => function($model){
+                                /**
+                                 * @var $model TicketHead
+                                 */
+                                if (!empty($model->date_update)){
+                                    return AmintadoFunctions::convertdatetime($model->date_update);
+                                }
+                            },
                         ],
                     ],
                 ]) ?>

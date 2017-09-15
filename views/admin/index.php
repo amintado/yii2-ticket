@@ -37,13 +37,13 @@
                         'value'     => function ($model) {
                             switch ($model->body['client']) {
                                 case 0 :
-                                    if ($model->status == \ricco\ticket\models\TicketHead::CLOSED) {
+                                    if ($model->status == \amintado\ticket\models\TicketHead::CLOSED) {
                                         return '<div class="label label-success">مشتری</div>&nbsp;<div class="label label-default">بسته شده</div>';
                                     }
 
                                     return '<div class="label label-success">مشتری</div>';
                                 case 1 :
-                                    if ($model->status == \ricco\ticket\models\TicketHead::CLOSED) {
+                                    if ($model->status == \amintado\ticket\models\TicketHead::CLOSED) {
                                         return '<div class="label label-primary">مدیر</div>&nbsp;<div class="label label-default">بسته شده</div>';
                                     }
 
@@ -54,7 +54,14 @@
                     ],
                     [
                         'attribute' => 'date_update',
-                        'value'     => 'date_update',
+                        'value'          => function($model){
+                            /**
+                             * @var $model TicketHead
+                             */
+                            if (!empty($model->date_update)){
+                                return Yii::$app->functions->convertdatetime($model->date_update);
+                            }
+                        },
                     ],
                     [
                         'class'         => 'yii\grid\ActionColumn',

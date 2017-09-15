@@ -29,10 +29,17 @@ use yii\helpers\Html;
             <?php foreach ($thisTicket as $ticket) : ?>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <span><?= $ticket['name_user'] ?>&nbsp;<span
+                        <span><?= $ticket['name_user'] ?>&nbsp; <span
                                     style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>
-                                )</span></span>
-                        <span class="pull-right"><?= $ticket['date'] ?></span>
+                                )</span> </span>
+                        <span class="pull-right" style="margin-left: 5px">
+                        <?php
+                        if (!empty($ticket['date'])) {
+                            echo Yii::$app->functions->convertdatetime($ticket['date']);
+                        }
+
+                        ?>
+                        </span>
                     </div>
                     <div class="panel-body">
                         <?= nl2br(Html::encode($ticket['text'])) ?>

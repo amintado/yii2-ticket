@@ -29,7 +29,7 @@ $this->title = 'پشتیبانی';
                         'text')->textarea(['style' => 'height: 150px; resize: none;'])->label('پیام شما')->error() ?>
                     <?= $form->field($fileTicket, 'fileName[]')->fileInput([
                         'multiple' => true,
-                        'accept'   => 'image/*',
+                        'accept' => 'image/*',
                     ])->label(false); ?>
                     <div class="text-center">
                         <button class='btn btn-primary'>ارسال به</button>
@@ -43,8 +43,16 @@ $this->title = 'پشتیبانی';
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                 <span><?= $ticket['name_user'] ?>&nbsp;<span
-                        style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>)</span></span>
-                        <span class="pull-right"><?= $ticket['date'] ?></span>
+                            style="font-size: 12px"> (<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>) </span> </span>
+
+                        <span class="pull-right" style="margin-left: 5px">
+                            <?php
+                            if (!empty($ticket['date'])) {
+                               echo Yii::$app->functions->convertdatetime($ticket['date']);
+                            }
+
+                            ?>
+                        </span>
                     </div>
                     <div class="panel-body clearfix" style="word-wrap: break-word;">
                         <?= nl2br(Html::encode($ticket['text'])) ?>
@@ -52,8 +60,8 @@ $this->title = 'پشتیبانی';
                             <hr>
                             <?php foreach ($ticket->file as $file) : ?>
                                 <a href="/fileTicket/<?= $file->fileName ?>" target="_blank"><img
-                                        src="/fileTicket/reduced/<?= $file->fileName ?> " alt="..."
-                                        class="img-thumbnail"></a>
+                                            src="/fileTicket/reduced/<?= $file->fileName ?> " alt="..."
+                                            class="img-thumbnail"></a>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </div>
