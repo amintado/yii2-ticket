@@ -48,7 +48,7 @@ Install composer require "amintado/yii2-ticket:1.0.8"
 
 # GET routes
 ```
-index.php?r=ticket/ticket/index
+index.php?r=ticket/
 index.php?r=ticket/admin/index
 ```
 
