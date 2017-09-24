@@ -17,7 +17,7 @@ use yii\helpers\Html;
                 <div class="well">
                     <?php $form = \yii\widgets\ActiveForm::begin() ?>
                     <?= $form->field($newTicket,
-                        'text')->textarea(['style' => 'height: 150px; resize: none;'])->label('Сообщение')->error() ?>
+                        'text')->textarea(['style' => 'height: 150px; resize: none;'])->label('متن پاسخ')->error() ?>
                     <div class="text-center">
                         <button class='btn btn-primary'>ارسال</button>
                     </div>
@@ -29,6 +29,17 @@ use yii\helpers\Html;
             <?php foreach ($thisTicket as $ticket) : ?>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
+<<<<<<< HEAD
+                        <span><?= $ticket['name_user'] ?>&nbsp;</span>
+                        <span
+                                    style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>
+                                )
+                        </span>
+                        <span class="pull-right" style="margin:0 15px"><?php
+                            $function= new amintado\base\AmintadoFunctions();
+                           echo $function->convertdatetime($ticket['date']);
+                            ?></span>
+=======
                         <span><?= $ticket['name_user'] ?>&nbsp; <span
                                     style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>
                                 )</span> </span>
@@ -40,6 +51,7 @@ use yii\helpers\Html;
 
                         ?>
                         </span>
+>>>>>>> 9ca692f2dcafeaa0b83d13fd8b9007a87d19a6c9
                     </div>
                     <div class="panel-body">
                         <?= nl2br(Html::encode($ticket['text'])) ?>

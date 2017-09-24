@@ -1,5 +1,5 @@
 <?php
-/** @var \ricco\ticket\models\TicketHead $dataProvider */
+/** @var \amintado\ticket\models\TicketHead $dataProvider */
 ?>
 
 <div class="panel page-block">
@@ -54,6 +54,11 @@
                     ],
                     [
                         'attribute' => 'date_update',
+<<<<<<< HEAD
+                        'value'     => function($model){
+                            $function= new amintado\base\AmintadoFunctions();
+                            return $function->convertdatetime($model->date_update);
+=======
                         'value'          => function($model){
                             /**
                              * @var $model TicketHead
@@ -61,6 +66,7 @@
                             if (!empty($model->date_update)){
                                 return Yii::$app->functions->convertdatetime($model->date_update);
                             }
+>>>>>>> 9ca692f2dcafeaa0b83d13fd8b9007a87d19a6c9
                         },
                     ],
                     [

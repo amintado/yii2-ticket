@@ -17,7 +17,8 @@
         }
     ],
     "require": {
-        "php": ">=5.6.0"
+        "php": ">=5.6.0",
+        "amintado/yii2-amintado-global-functions": "*"
     },
     "autoload": {
         "psr-4": {
