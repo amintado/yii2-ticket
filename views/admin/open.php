@@ -1,9 +1,10 @@
 <?php
-/** @var \ricco\ticket\models\TicketHead $ticketHead */
+/** @var \amintado\ticket\models\TicketHead $ticketHead */
 use yii\helpers\Html;
 use yii\web\JsExpression;
 
-/** @var \ricco\ticket\models\TicketBody $ticketBody */
+$this->title='ایجاد تیکت پشتیبانی برای یک کاربر';
+/** @var \amintado\ticket\models\TicketBody $ticketBody */
 ?>
 <div class="panel page-block">
     <div class="container-fluid row">

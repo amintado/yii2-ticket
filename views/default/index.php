@@ -56,6 +56,9 @@ $this->registerJs("
         box-shadow: 0 14px 26px -12px hsla(291.2, 63.7%, 42.2%, 0.4), 0 4px 23px 0px hsla(0, 0%, 0%, 0.1), 0 8px 10px -5px hsla(291.2, 63.7%, 42.2%, 0.2);
         color: white;
     }
+    .header-t {
+        background: hsl(180, 35.1%, 92.7%);
+    }
 </style>
 <div class="panel page-block">
     <div class="container-fluid row">
@@ -63,49 +66,60 @@ $this->registerJs("
             <a type="button" href="<?= Url::to(['open']) ?>" class="circle-btn pull-right"
                style="margin-right: 10px"><span class="glyphicon glyphicon-plus"></span> </a>
             <div class="clearfix" style="margin-bottom: 10px"></div>
-            <div>
-                <?= \yii\grid\GridView::widget([
-                    'dataProvider' => $dataProvider,
-                    'rowOptions' => function ($model) {
-                        return ['data-id' => $model->id, 'class' => 'ticket'];
-                    },
-                    'columns' => [
-                        'department',
-                        'topic',
-                        [
-                            'contentOptions' => [
-                                'style' => 'text-align:center;',
-                            ],
-                            'value' => function ($model) {
-                                switch ($model['status']) {
-                                    case TicketHead::OPEN :
-                                        return '<div class="label label-default">در انتظار پاسخ</div>';
-                                    case TicketHead::WAIT :
-                                        return '<div class="label label-warning">پاسخ مشتری</div>';
-                                    case TicketHead::ANSWER :
-                                        return '<div class="label label-success">پاسخ داده شده</div>';
-                                    case TicketHead::CLOSED :
-                                        return '<div class="label label-info">بسته شده</div>';
-                                }
-                            },
-                            'format' => 'html',
-                        ],
-                        [
-                            'contentOptions' => [
-                                'style' => 'text-align:right; font-size:13px',
-                            ],
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">لیست تیکت های شما</h3>
+                </div>
+                <div class="panel-body" style="min-height: 70vh">
 
-                            'attribute' => 'date_update',
-                            'value' => function ($model) {
-                                $function = new amintado\base\AmintadoFunctions();
-                                return $function->convertdatetime($model->date_update);
-                            },
-                            
+                    <?= \yii\grid\GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'rowOptions' => function ($model) {
+                            return ['data-id' => $model->id, 'class' => 'ticket'];
+                        },
+                        'headerRowOptions' =>  ['class' => 'header-t'],
+                        'columns' => [
+                            'department',
+                            'topic',
+                            [
+                                'contentOptions' => [
+                                    'style' => 'text-align:center;',
+                                ],
+                                'attribute' => 'status',
+                                'value' => function ($model) {
+                                    switch ($model['status']) {
+                                        case TicketHead::OPEN :
+                                            return '<div class="label label-default">در انتظار پاسخ</div>';
+                                        case TicketHead::WAIT :
+                                            return '<div class="label label-warning">پاسخ مشتری</div>';
+                                        case TicketHead::ANSWER :
+                                            return '<div class="label label-success">پاسخ داده شده</div>';
+                                        case TicketHead::CLOSED :
+                                            return '<div class="label label-info">بسته شده</div>';
+                                        case TicketHead::VIEWED :
+                                            return '<div class="label label-info">دیده شده</div>';
+                                    }
+                                },
+                                'format' => 'html',
+                            ],
+                            [
+                                'contentOptions' => [
+                                    'style' => 'text-align:right; font-size:13px',
+                                ],
 
+                                'attribute' => 'date_update',
+                                'value' => function ($model) {
+                                    $function = new amintado\base\AmintadoFunctions();
+                                    return $function->convertdatetime($model->date_update);
+                                },
+
+
+                            ],
                         ],
-                    ],
-                ]) ?>
+                    ]) ?>
+                </div>
             </div>
+
         </div>
     </div>
 </div>

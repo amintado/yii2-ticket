@@ -1,8 +1,9 @@
 <?php
-/** @var \ricco\ticket\models\TicketHead $newTicket */
+/** @var \amintado\ticket\models\TicketHead $newTicket */
 use yii\helpers\Html;
 
-/** @var \ricco\ticket\models\TicketBody $thisTicket */
+$this->title='پاسخ به تیکت';
+/** @var \amintado\ticket\models\TicketBody $thisTicket */
 ?>
 <div class="panel page-block">
     <div class="container-fluid row">
@@ -29,7 +30,6 @@ use yii\helpers\Html;
             <?php foreach ($thisTicket as $ticket) : ?>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-<<<<<<< HEAD
                         <span><?= $ticket['name_user'] ?>&nbsp;</span>
                         <span
                                     style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>
@@ -39,19 +39,6 @@ use yii\helpers\Html;
                             $function= new amintado\base\AmintadoFunctions();
                            echo $function->convertdatetime($ticket['date']);
                             ?></span>
-=======
-                        <span><?= $ticket['name_user'] ?>&nbsp; <span
-                                    style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>
-                                )</span> </span>
-                        <span class="pull-right" style="margin-left: 5px">
-                        <?php
-                        if (!empty($ticket['date'])) {
-                            echo Yii::$app->functions->convertdatetime($ticket['date']);
-                        }
-
-                        ?>
-                        </span>
->>>>>>> 9ca692f2dcafeaa0b83d13fd8b9007a87d19a6c9
                     </div>
                     <div class="panel-body">
                         <?= nl2br(Html::encode($ticket['text'])) ?>

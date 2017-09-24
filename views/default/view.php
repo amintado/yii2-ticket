@@ -63,55 +63,64 @@ $this->title = 'پشتیبانی';
                 <div class="well">
                     <?php $form = \yii\widgets\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
                     <?= $form->field($newTicket,
-                        'text')->textarea(['style' => 'height: 150px; resize: none;'])->label('پیام شما')->error() ?>
+                        'text')->textarea(['style' => 'height: 150px; resize: none;'])->label('پاسخ شما')->error() ?>
                     <?= $form->field($fileTicket, 'fileName[]')->fileInput([
                         'multiple' => true,
                         'accept' => 'image/*',
                     ])->label(false); ?>
                     <div class="text-center">
-                        <button class='btn btn-primary'>ارسال به</button>
+                        <button class='btn btn-primary'>ارسال پاسخ</button>
                     </div>
                     <?= $form->errorSummary($newTicket) ?>
                     <?php $form->end() ?>
                 </div>
             </div>
             <div class="clearfix" style="margin-bottom: 20px"></div>
-            <?php foreach ($thisTicket as $ticket) : ?>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                <span><?= $ticket['name_user'] ?>&nbsp;<span
-<<<<<<< HEAD:views/default/view.php
-                        style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>)</span></span>
-                        <span class="pull-right" style="margin: 0 15px"><?php
-                            $function= new amintado\base\AmintadoFunctions();
-                            echo $function->convertdatetime($ticket['date']);
-                            ?></span>
-=======
-                            style="font-size: 12px"> (<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>) </span> </span>
-
-                        <span class="pull-right" style="margin-left: 5px">
-                            <?php
-                            if (!empty($ticket['date'])) {
-                               echo Yii::$app->functions->convertdatetime($ticket['date']);
-                            }
-
-                            ?>
-                        </span>
->>>>>>> 9ca692f2dcafeaa0b83d13fd8b9007a87d19a6c9:views/ticket/view.php
-                    </div>
-                    <div class="panel-body clearfix" style="word-wrap: break-word;">
-                        <?= nl2br(Html::encode($ticket['text'])) ?>
-                        <?php if (!empty($ticket->file)) : ?>
-                            <hr>
-                            <?php foreach ($ticket->file as $file) : ?>
-                                <a href="/fileTicket/<?= $file->fileName ?>" target="_blank"><img
-                                            src="/fileTicket/reduced/<?= $file->fileName ?> " alt="..."
-                                            class="img-thumbnail"></a>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">درخواست های ارسال شده</h3>
                 </div>
-            <?php endforeach; ?>
+                <div class="panel-body">
+                    <?php foreach ($thisTicket as $ticket) : ?>
+                        <div class="panel <?php
+                        if ( $ticket['name_user'] == Yii::$app->user->identity->username){
+                            echo 'panel-default';
+                        }else{
+                            echo 'panel-info';
+                        }
+                        ?>">
+                            <div class="panel-heading">
+                <span><?php
+                    if ( $ticket['name_user'] == Yii::$app->user->identity->username){
+                        echo 'شما';
+                    }else{
+                        echo 'مدیر سایت';
+                    }
+
+
+                    ?>&nbsp;<span
+                            style="font-size: 12px">(<?= ($ticket['client'] == 1) ? 'کارمند' : 'مشتری' ?>)</span></span>
+                                <span class="pull-right" style="margin: 0 15px"><?php
+                                    $function= new amintado\base\AmintadoFunctions();
+                                    echo $function->convertdatetime($ticket['date']);
+                                    ?></span>
+                            </div>
+                            <div class="panel-body clearfix" style="word-wrap: break-word;">
+                                <?= nl2br(Html::encode($ticket['text'])) ?>
+                                <?php if (!empty($ticket->file)) : ?>
+                                    <hr>
+                                    <?php foreach ($ticket->file as $file) : ?>
+                                        <a href="/fileTicket/<?= $file->fileName ?>" target="_blank"><img
+                                                    src="/fileTicket/reduced/<?= $file->fileName ?> " alt="..."
+                                                    class="img-thumbnail"></a>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

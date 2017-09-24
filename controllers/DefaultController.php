@@ -65,7 +65,7 @@ class DefaultController extends Controller
             $ticket->save();
         }
 
-        $thisTicket = TicketBody::find()->where(['id_head' => $id])->joinWith('file')->orderBy('date DESC')->all();
+        $thisTicket = TicketBody::find()->where(['id_head' => $id])->joinWith('file')->orderBy('date ASC')->all();
 
         if (!$ticket || !$thisTicket) {
             return $this->actionIndex();

@@ -1,5 +1,5 @@
 <?php
-$this->title = 'پشتیبانی';
+$this->title = 'درخواست پشتیبانی جدید';
 
 /** @var \amintado\ticket\models\TicketHead $ticketHead */
 /** @var \amintado\ticket\models\TicketBody $ticketBody */
