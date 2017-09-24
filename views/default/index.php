@@ -51,7 +51,8 @@ $this->registerJs("
         right: 189px;
         z-index: 99999;
     }
-    .circle-btn:hover{
+
+    .circle-btn:hover {
         box-shadow: 0 14px 26px -12px hsla(291.2, 63.7%, 42.2%, 0.4), 0 4px 23px 0px hsla(0, 0%, 0%, 0.1), 0 8px 10px -5px hsla(291.2, 63.7%, 42.2%, 0.2);
         color: white;
     }
@@ -65,17 +66,17 @@ $this->registerJs("
             <div>
                 <?= \yii\grid\GridView::widget([
                     'dataProvider' => $dataProvider,
-                    'rowOptions'   => function ($model) {
+                    'rowOptions' => function ($model) {
                         return ['data-id' => $model->id, 'class' => 'ticket'];
                     },
-                    'columns'      => [
+                    'columns' => [
                         'department',
                         'topic',
                         [
                             'contentOptions' => [
                                 'style' => 'text-align:center;',
                             ],
-                            'value'          => function ($model) {
+                            'value' => function ($model) {
                                 switch ($model['status']) {
                                     case TicketHead::OPEN :
                                         return '<div class="label label-default">در انتظار پاسخ</div>';
@@ -87,28 +88,20 @@ $this->registerJs("
                                         return '<div class="label label-info">بسته شده</div>';
                                 }
                             },
-                            'format'         => 'html',
+                            'format' => 'html',
                         ],
                         [
                             'contentOptions' => [
                                 'style' => 'text-align:right; font-size:13px',
                             ],
-<<<<<<< HEAD:views/default/index.php
+
                             'attribute' => 'date_update',
-                            'value'     => function($model){
-                                $function= new amintado\base\AmintadoFunctions();
+                            'value' => function ($model) {
+                                $function = new amintado\base\AmintadoFunctions();
                                 return $function->convertdatetime($model->date_update);
-=======
-                            'attribute'      => 'date_update',
-                            'value'          => function($model){
-                                /**
-                                 * @var $model TicketHead
-                                 */
-                                if (!empty($model->date_update)){
-                                    return AmintadoFunctions::convertdatetime($model->date_update);
-                                }
->>>>>>> 9ca692f2dcafeaa0b83d13fd8b9007a87d19a6c9:views/ticket/index.php
                             },
+                            
+
                         ],
                     ],
                 ]) ?>
