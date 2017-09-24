@@ -29,13 +29,13 @@ $this->title='ایجاد تیکت پشتیبانی برای یک کاربر';
                 <?= Html::activeHiddenInput($ticketHead, 'user_id') ?>
                 <?= $form->field($ticketHead, 'department')
                     ->dropDownList($qq)
-                    ->label('Сообщение')->error() ?>
+                    ->label('دپارتمان انتخابی')->error() ?>
                 <?= $form->field($ticketHead, 'topic')
                     ->textInput() ?>
                 <?= $form->field($ticketBody, 'text')
                     ->textarea([
                         'style' => 'height: 150px; resize: none;',
-                    ])->label('Сообщение'); ?>
+                    ])->label('متن پیام'); ?>
                 <div class="text-center">
                     <button class='btn btn-primary'>ارسال</button>
                 </div>
