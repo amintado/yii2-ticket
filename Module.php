@@ -24,6 +24,8 @@ class Module extends \yii\base\Module
     /** @var  User */
     public $userModel = false;
 
+    public $eventClass='amintado\ticket\Event';
+
     /**
      * Departments List
      * @var array

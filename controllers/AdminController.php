@@ -8,6 +8,8 @@ use amintado\ticket\models\TicketHead;
 use amintado\ticket\models\User;
 use amintado\ticket\Module;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\web\Controller;
 
@@ -16,6 +18,66 @@ use yii\web\Controller;
  */
 class AdminController extends Controller
 {
+    public function behaviors()
+    {
+        return
+            [
+                'verbs' =>
+                    [
+                        'class' => VerbFilter::className(),
+
+                    ],
+                'access' =>
+                    [
+                        'class' => AccessControl::className(),
+                        'rules' =>
+                            [
+                                [
+                                    'allow' => true,
+                                    'actions' => ['index'],
+                                    'roles' => ['TicketAdminIndex']
+                                ],
+                                [
+                                    'allow' => true,
+                                    'actions' => ['view'],
+                                    'roles' => ['TicketAdminView']
+                                ],
+                                [
+                                    'allow' => true,
+                                    'actions' => ['create'],
+                                    'roles' => ['TicketAdminCreate']
+                                ],
+                                [
+                                    'allow' => true,
+                                    'actions' => ['update'],
+                                    'roles' => ['TicketAdminUpdate']
+                                ],
+                                [
+                                    'allow' => true,
+                                    'actions' => ['delete'],
+                                    'roles' => ['TicketAdminDelete']
+                                ],
+                                [
+                                    'allow' => true,
+                                    'actions' => ['closed'],
+                                    'roles' => ['TicketAdminClosed']
+                                ],
+                                [
+                                    'allow' => true,
+                                    'actions' => ['open'],
+                                    'roles' => ['TicketAdminOpen']
+                                ],
+                                [
+                                    'allow' => true,
+                                    'actions' => ['answer'],
+                                    'roles' => ['TicketAdminAnswer']
+                                ],
+                            ]
+                    ]
+
+            ];
+    }
+
     /**
      * Выдорка всех тикетов
      * Сортировка по полю дата в обратном порядке
@@ -54,7 +116,10 @@ class AdminController extends Controller
                 $ticketHead->status = TicketHead::ANSWER;
 
                 if ($ticketHead->save()) {
-                    return $this->redirect(Url::to()); 
+                    Yii::$app->controller->module->eventClass::afterAnswer($ticketHead);
+                    return $this->redirect(Url::to());
+                }else{
+                    Yii::$app->controller->module->eventClass::AnswerError($ticketHead);
                 }
             }
         }
@@ -76,13 +141,8 @@ class AdminController extends Controller
         $model->status = TicketHead::CLOSED;
 
         $model->save();
-		
-		if ($this->module->mailSend !== false) {
-            (new Mailer())
-                ->sendMailDataTicket($model->topic, $model->status, $model->id, '')
-                ->setDataFrom(Yii::$app->params['adminEmail'], $this->module->subjectAnswer)
-                ->senda('closed');
-        }
+
+        Yii::$app->controller->module->eventClass::AfterClose($model);
 
         return $this->redirect(Url::previous());
     }
@@ -94,7 +154,10 @@ class AdminController extends Controller
      */
     public function actionDelete($id)
     {
-        TicketHead::findOne($id)->delete();
+
+        $model=TicketHead::findOne($id);
+        Yii::$app->controller->module->eventClass::BeforeDelete($model);
+        $model->delete();
 
         return $this->redirect(Url::to(['/ticket/admin/index']));
     }
@@ -109,19 +172,21 @@ class AdminController extends Controller
         $users = $userModel::find()->select(['username as value', 'username as label', 'id as id'])->asArray()->all();
 
         if ($post = \Yii::$app->request->post()) {
-            
+
             $ticketHead->load($post);
             $ticketBody->load($post);
-            
+
             if ($ticketHead->validate() && $ticketBody->validate()) {
-                
+
                 $ticketHead->user = $post['TicketHead']['user_id'];
                 $ticketHead->status = TicketHead::ANSWER;
                 if ($ticketHead->save()) {
                     $ticketBody->id_head = $ticketHead->primaryKey;
                     $ticketBody->save();
-
+                    Yii::$app->controller->module->eventClass::afterCreate($ticketHead);
                     $this->redirect(Url::previous());
+                }else{
+                    Yii::$app->controller->module->eventClass::CreateError($ticketHead);
                 }
             }
         }
@@ -129,8 +194,8 @@ class AdminController extends Controller
         return $this->render('open', [
             'ticketHead' => $ticketHead,
             'ticketBody' => $ticketBody,
-            'qq'         => $this->module->qq,
-            'users'      => $users,
+            'qq' => $this->module->qq,
+            'users' => $users,
         ]);
     }
 }

@@ -6,6 +6,7 @@ use amintado\ticket\models\TicketBody;
 use amintado\ticket\models\TicketFile;
 use amintado\ticket\models\TicketHead;
 use amintado\ticket\models\UploadForm;
+use Yii;
 use yii\filters\AccessControl;
 use yii\filters\AccessRule;
 use yii\helpers\Url;
@@ -143,7 +144,7 @@ class DefaultController extends Controller
                     if (\Yii::$app->request->isAjax) {
                         return 'OK';
                     }
-
+                    Yii::$app->controller->module->eventClass::afterCreate($ticketHead);
                     return $this->redirect(Url::previous());
                 }
             }
